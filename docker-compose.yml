@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      ARTIFACTS_DIR: /app/artifacts
+      BUNDLE_PATH: /app/artifacts/preprocess_bundle.joblib
+      MODEL_PATH: /app/artifacts/final_model.joblib
+      EMBEDDING_MODEL_ID: Qwen/Qwen3.5-0.8B-Base
+      EMBEDDING_CACHE_PATH: /app/artifacts/cache/embeddings.sqlite
+      TARGET_TRANSFORM: log1p
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+    volumes:
+      - ./artifacts:/app/artifacts
