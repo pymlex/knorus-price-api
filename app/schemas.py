@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import List, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class BookRecord(BaseModel):
@@ -21,6 +21,8 @@ class BookRecord(BaseModel):
 
 
 class PredictionResponse(BaseModel):
+    model_config = ConfigDict(protected_namespaces=())
+
     predicted_price: float
     predicted_log_price: Optional[float] = None
     model_name: str
